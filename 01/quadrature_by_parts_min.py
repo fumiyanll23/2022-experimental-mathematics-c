@@ -8,5 +8,11 @@ def f(x: float) -> float:
     return math.sqrt(1 - x*x)
 
 
-# 微小区間の幅 (小さくするほど精度が高くなる)
-step = 0.01
+# 分割数 (大きくするほど精度が高くなる)
+n = 1000000
+
+total = 0
+for k in range(1, n+1):
+    total += f(k / n)
+
+print(4 * total / n)
