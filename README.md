@@ -1,2 +1,11 @@
-# 2022-experimental-mathematics-c
+# 実験数学C
+
 2022年度第3ターム開講「実験数学C」にまつわるエトセトラ
+
+## はじめに
+
+プログラムを実行するために必要なモジュールをインストールしてください：
+
+```terminal
+$ pip install -r requirements.txt
+```
