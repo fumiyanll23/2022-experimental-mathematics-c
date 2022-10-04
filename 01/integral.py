@@ -1,3 +1,4 @@
+# written by NARITA, Fumiyas
 # 円周率の近似値を積分を用いて求める
 # 必要なモジュールをインポートする
 import sympy as sp

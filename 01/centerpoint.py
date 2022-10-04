@@ -1,3 +1,4 @@
+# written by TAGAWA, Takara
 # 円周率の近似値を中点公式を用いて求める
 #必要なモジュールをインポート
 import math

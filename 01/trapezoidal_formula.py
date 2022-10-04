@@ -1,3 +1,4 @@
+# written by NARITA, Fumiya
 # 円周率の近似値を台形公式を用いて求める
 # 必要なモジュールをインポートする
 import math

@@ -1,3 +1,4 @@
+# written by NARITA, Fumiya
 # 円周率の近似値を区分求積法 (最大値) を用いて求める
 # 必要なモジュールをインポートする
 import math

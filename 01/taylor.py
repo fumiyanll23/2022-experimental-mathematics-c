@@ -1,3 +1,4 @@
+# written by TAGAWA, Takara
 # coding: utf-8
 # 円周率の近似値をTaylor展開を用いて求める
 #必要なモジュールをインポート
