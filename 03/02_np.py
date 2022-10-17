@@ -11,6 +11,6 @@ Ass = np.array([
     ])
 bs = np.array([8, 16])
 
-# 連立方程式を解く
+# 連立方程式を解く。ただし、特異行列 (非正則行列) なので不定である
 anss = np.linalg.solve(Ass, bs)
 print(f"(x, y) = {anss}")

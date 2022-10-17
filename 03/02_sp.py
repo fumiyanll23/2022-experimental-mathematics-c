@@ -12,6 +12,7 @@ y = sp.Symbol("y")
 eq_01 = x + 2*y - 8
 eq_02 = 2*x + 4*y - 16
 
-# 連立方程式を解く
+# 連立方程式を解く。ただし、特異行列 (非正則行列) なので不定である
 anss = sp.solve([eq_01, eq_02], [x, y])
-print(f"(x, y) = {anss}")
+for k, v in anss.items():
+    print(f"{k} = {v}")
