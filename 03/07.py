@@ -4,8 +4,8 @@ import sympy as sp
 x = sp.Symbol('x')
 y = sp.Symbol('y')
 #それぞれの方程式の右辺を移項した式を入力
-equation1 = 2*x + 1*y - 7
-equation2 = 6*x + 3*y - 15
+equation1 = x**2 + y**2 - 1
+equation2 = -sp.sin(x) + y
 #解を表示
 print(sp.solve([equation1, equation2]))
-#解なしであれば空白のリストが表示される
+#代数的には解けないためsympyだとエラーが出る
