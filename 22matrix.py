@@ -2,8 +2,7 @@
 import numpy as np
 import numpy.linalg as LA
 # 2×2正方行列を定義
-a = np.array([[2, -2],
-             [-1, 3]])
+a = np.array([[2, -2], [-1, 3]])
 
 # aの固有値と固有ベクトル
 # インデクス0に固有値、インデクス1に固有ベクトルが格納される
