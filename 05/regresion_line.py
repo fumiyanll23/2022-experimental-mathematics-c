@@ -1,4 +1,4 @@
-#Written by TAGAWATakara
+#Written by TAGAWATakara and NARITA, Fumiya
 #必要なモジュールをインポート
 import numpy as np #np.dot(x, y) xyの内積をとる関数。
 import matplotlib.pyplot as plt
@@ -20,4 +20,5 @@ print(a,b)
 #グラフを描画
 plt.scatter(x, y, color="k")
 plt.plot([0, x.max()], [b, a * x.max() + b]) #(0, b)地点から(xの最大値,ax + b)地点までの線
+plt.savefig("./img/regression.png")
 plt.show()
