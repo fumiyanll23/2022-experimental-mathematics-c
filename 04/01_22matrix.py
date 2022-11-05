@@ -1,4 +1,5 @@
 # written by TAGAWA, Takara and NARITA, Fumiya
+# 行列[[2,-2], [-1,3]]の固有値・固有ベクトルを求める
 # 必要なモジュールをインポート
 import numpy as np
 
