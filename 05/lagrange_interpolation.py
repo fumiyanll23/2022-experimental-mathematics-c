@@ -1,18 +1,22 @@
 # written by NARITA, Fumiya
+# Lagrange補間を用いて，与えられた6点(0.0, 2.0), (0.2, 2.12), (0.4, 1.62), (0.6, 2.57), (0.8, 1.53), (1.0, 2.0)から5次多項式を求める
 # 必要なモジュールをインポート
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
-import matplotlib.pyplot as plt
+from nptyping import Float, NDArray, Shape
 
-def lix(xs, i, x):
+
+def lix(xs: NDArray[Shape["1, 6"], Float], i: int, x: sp.Symbol) -> sp.Expr:
     """Lagrange補間で用いるl_i(x)関数
 
     Args:
-        xs: x座標のリスト
-        x: 変数
-        i: 添え字
+        xs (NDArray[Shape["1, 6"]): x座標のリスト
+        i (int): 添え字
+        x (sp.Symbol): 変数
 
-    Returns: l_i(x)
+    Returns:
+        sp.Expr: l_i(x)
     """
     numerator, denominator = 1.0, 1.0
     for k in range(len(xs)):
@@ -23,14 +27,18 @@ def lix(xs, i, x):
     return numerator / denominator
 
 
-def lagrange(x, xs, ys):
+def lagrange(
+    x: sp.Symbol, xs: NDArray[Shape["1, 6"], Float], ys: NDArray[Shape["1, 6"], Float]
+) -> sp.Expr:
     """Lagrange補間を用いて(n-1)次多項式を求める
 
     Args:
-        xs: x座標のリスト
-        ys: y座標のリスト
+        x (sp.Symbol): 変数
+        xs (NDArray[Shape["1, 6"], Float]): x座標のリスト
+        ys (NDArray[Shape["1, 6"], Float]): y座標のリスト
 
-    Returns: 補間した多項式
+    Returns:
+        sp.Expr: 補間した多項式
     """
     # Lagrange補間で用いるl_i(x)を求める
     lixs = [lix(xs, i, x) for i in range(len(xs))]
@@ -43,21 +51,21 @@ def lagrange(x, xs, ys):
 # 変数xを定義する
 x = sp.Symbol("x")
 # x座標
-xs = np.array((0.0, 0.2, 0.4, 0.6, 0.8, 1.0))
+xs = np.array([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 # y座標
-ys = np.array((2.0, 2.12, 1.62, 2.57, 1.53, 2.0))
+ys = np.array([2.0, 2.12, 1.62, 2.57, 1.53, 2.0])
 
-# Lagrange補間を用いて，6点から5次多項式を求める
+# Lagrange補間を用いて，与えられた6点から5次多項式を求める
 polynomial = lagrange(x, xs, ys)
 print(polynomial)
 
 # 求めた多項式のグラフを描画する
 xplots = np.linspace(0.0, 1.0, 100)
 yplots = [polynomial.subs(x, xi) for xi in xplots]
-plt.title("Lagrange interpolation")
+plt.title("Lagrange Interpolation")
 plt.xlabel("x")
 plt.ylabel("y")
-plt.scatter(xs, ys, color="blue")
-plt.plot(xplots, yplots, color="red")
-plt.savefig("./img/lagrange.png")
+plt.scatter(xs, ys, color="black")
+plt.plot(xplots, yplots)
+plt.savefig("./05/img/lagrange.png")
 plt.show()
