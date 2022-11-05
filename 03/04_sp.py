@@ -3,16 +3,15 @@
 # 必要なモジュールをインポートする
 import sympy as sp
 
-
 # 変数を定義する
 x = sp.Symbol("x_1")
 y = sp.Symbol("x_2")
 z = sp.Symbol("x_3")
 
 # 方程式を多項式として定義する
-eq_01 = 3*x + y + 2*z - 13
-eq_02 = 5*x + y + 3*z -20
-eq_03 = 4*x + 2*y + z - 13
+eq_01 = 3 * x + y + 2 * z - 13
+eq_02 = 5 * x + y + 3 * z - 20
+eq_03 = 4 * x + 2 * y + z - 13
 
 # 連立方程式を解く
 anss = sp.solve([eq_01, eq_02, eq_03], [x, y, z])
