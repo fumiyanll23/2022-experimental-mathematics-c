@@ -1,0 +1,10 @@
+{
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+    },
+    "editor.formatOnSave": true,
+  },
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/home/fumiyanll23/work/2022-experimental-mathematics-c/.venv/bin/black",
+}
