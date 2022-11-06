@@ -1,4 +1,4 @@
-# 実験数学C
+# 2022年度第3ターム 実験数学C
 
 ## これは何?
 
@@ -6,7 +6,7 @@
 
 ## 使い方 (2022/11/07現在)
 
-※自身のコンピュータ (ローカル環境) を汚したくない人はこの節をスキップし，次節の [【発展】仮想環境のすゝめ]() に従ってください．
+※自身のコンピュータ (ローカル環境) を汚したくない人はこの節をスキップし，次節の [【発展】仮想環境のすゝめ](https://github.com/fumiyanll23/2022-experimental-mathematics-c/tree/main#%E7%99%BA%E5%B1%95%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83%E3%81%AE%E3%81%99%E3%82%9D%E3%82%81) に従ってください．
 
 以下のコマンドを実行し，PowerShellからコマンドを実行する許可を与える：
 
@@ -58,7 +58,7 @@ python -m pip install "ipykernel>=6.17.0" "matplotlib>=3.6.2" "nptyping>=2.3.1" 
 
 1. Anaconda Promptを起動する．
 
-2. 以下のコマンドを実行し，Conda環境を作成する (\``emc''は\``2022 Experimental Mathematics C''の略です)：
+2. 以下のコマンドを実行し，Conda環境を作成する (\``2022emc''は\``2022 Experimental Mathematics C''の略です)：
 
 ```terminal
 conda create --name 2022emc python=3.10
