@@ -7,7 +7,7 @@ import sympy as sp
 from nptyping import Float, NDArray, Shape
 
 
-def lix(xs: NDArray[Shape["1, 6"], Float], i: int, x: sp.Symbol) -> sp.Expr:
+def lix(xs: NDArray[Shape["6"], Float], i: int, x: sp.Symbol) -> sp.Expr:
     """Lagrange補間で用いるl_i(x)関数
 
     Args:
@@ -28,7 +28,7 @@ def lix(xs: NDArray[Shape["1, 6"], Float], i: int, x: sp.Symbol) -> sp.Expr:
 
 
 def lagrange(
-    x: sp.Symbol, xs: NDArray[Shape["1, 6"], Float], ys: NDArray[Shape["1, 6"], Float]
+    x: sp.Symbol, xs: NDArray[Shape["6"], Float], ys: NDArray[Shape["6"], Float]
 ) -> sp.Expr:
     """Lagrange補間を用いて(n-1)次多項式を求める
 
