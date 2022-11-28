@@ -8,12 +8,26 @@ from sympy.plotting import plot
 x = sp.Symbol("x")
 y = sp.Function("y")
 # 常微分方程式を与える
-eq = sp.Eq(y(x).diff(x,2), -9*y(x))
+eq = sp.Eq(y(x).diff(x, 2), -9 * y(x))
 # 一般解を求める
 ans_gen = sp.dsolve(eq)
 print(f"一般解: {ans_gen.lhs} = {ans_gen.rhs}")
 # 境界値条件代入して特殊解を求める
-ans_sp = sp.dsolve(eq, ics={y(x).diff(x,1).subs(x,0): 0, y(x).diff(x,1).subs(x,sp.pi): 0})
+ans_sp = sp.dsolve(
+    eq, ics={y(x).diff(x, 1).subs(x, 0): 0, y(x).diff(x, 1).subs(x, sp.pi): 0}
+)
 print(f"特殊解: {ans_sp.lhs} = {ans_sp.rhs}")
-# 特殊解のグラフを描画する
-# plot(ans_sp.rhs, (x,0,10)).save("./08/img/02-02.png")
+# 任意定数を指定して、特殊解のグラフを描画する
+plotted = plot(sp.cos(3 * x), (x, 0, sp.pi), show=False, label="cos(3x)", legend=True)
+for c in range(2, 6):
+    plotted.append(
+        plot(
+            c * sp.cos(3 * x),
+            (x, 0, sp.pi),
+            show=False,
+            label=f"{c}*cos(3x)",
+            legend=True,
+        )[0]
+    )
+plotted.save("./08/img/02-02.png")
+plotted.show()
