@@ -16,4 +16,4 @@ print(f"一般解: {ans_gen.lhs} = {ans_gen.rhs}")
 ans_sp = sp.dsolve(eq, ics={y(0): 0, y(sp.pi/2): 0})
 print(f"特殊解: {ans_sp.lhs} = {ans_sp.rhs}")
 # 特殊解のグラフを描画する
-# plot(ans_sp.rhs, (x,0,10)).save("./08/img/02-01.png")
+plot(ans_sp.rhs, (x,0,10)).save("./08/img/02-01.png")
