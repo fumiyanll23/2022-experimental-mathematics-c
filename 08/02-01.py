@@ -16,16 +16,17 @@ print(f"一般解: {ans_gen.lhs} = {ans_gen.rhs}")
 ans_sp = sp.dsolve(eq, ics={y(0): 0, y(sp.pi): 0})
 print(f"特殊解: {ans_sp.lhs} = {ans_sp.rhs}")
 # 任意定数を指定して、特殊解のグラフを描画する
-plotted = plot(sp.sin(3 * x), (x, 0, sp.pi), show=False, label="sin(3x)", legend=True)
+plotted = plot(
+    sp.sin(3 * x), (x, 0, sp.pi), show=False, label="sin(3x) (C1=1)", legend=True
+)
 for c in range(2, 6):
     plotted.append(
         plot(
             c * sp.sin(3 * x),
             (x, 0, sp.pi),
             show=False,
-            label=f"{c}*sin(3x)",
+            label=f"{c}*sin(3x) (C1={c})",
             legend=True,
         )[0]
     )
 plotted.save("./08/img/02-01.png")
-plotted.show()

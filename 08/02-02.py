@@ -18,16 +18,17 @@ ans_sp = sp.dsolve(
 )
 print(f"特殊解: {ans_sp.lhs} = {ans_sp.rhs}")
 # 任意定数を指定して、特殊解のグラフを描画する
-plotted = plot(sp.cos(3 * x), (x, 0, sp.pi), show=False, label="cos(3x)", legend=True)
+plotted = plot(
+    sp.cos(3 * x), (x, 0, sp.pi), show=False, label="cos(3x) (C2=1)", legend=True
+)
 for c in range(2, 6):
     plotted.append(
         plot(
             c * sp.cos(3 * x),
             (x, 0, sp.pi),
             show=False,
-            label=f"{c}*cos(3x)",
+            label=f"{c}*cos(3x) (C2={c})",
             legend=True,
         )[0]
     )
 plotted.save("./08/img/02-02.png")
-plotted.show()
