@@ -13,7 +13,7 @@ eq = sp.Eq( y(x).diff(x,2) + y(x) - x ,0)
 ans_gen = sp.dsolve(eq)
 print(f"一般解: {ans_gen.lhs} = {ans_gen.rhs}")
 # 境界値条件代入して特殊解を求める
-ans_sp = sp.dsolve(eq, ics={y(0): 0, y(sp.pi): sp.pi})
+ans_sp = sp.dsolve(eq, ics={y(0): 0, y(sp.pi/2): 0})
 print(f"特殊解: {ans_sp.lhs} = {ans_sp.rhs}")
 # 特殊解のグラフを描画する
 # plot(ans_sp.rhs, (x,0,10)).save("./08/img/02-01.png")
