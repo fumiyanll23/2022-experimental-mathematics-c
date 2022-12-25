@@ -1,4 +1,4 @@
-# 4元連立方程式の解をJacobi法を用いて求める
+# 4元連立方程式の解をGauss-Seidel法を用いて求める
 import numpy as np
 
 # 標準出力に関する設定
