@@ -8,7 +8,7 @@ y = np.zeros(N)
 # 許容誤差
 EPS = 1.0e-6
 # 行列Aの定義
-a = np.array(
+A = np.array(
     [
         [11.0, 7.0, -5.0],
         [0.0, 10.0, -1.0],
@@ -30,7 +30,7 @@ for k in range(1, KMAX + 1):
     for i in range(N):
         y[i] = 0.0
         for j in range(N):
-            y[i] += a[i][j] * x[j]
+            y[i] += A[i][j] * x[j]
     sum1 = 0.0
     sum2 = 0.0
     # レイリー商λ1 = ∥y∥ / (y, x)
