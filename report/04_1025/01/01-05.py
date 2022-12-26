@@ -29,7 +29,7 @@ def gy(x: float, y: float) -> float:
 
 def newton(
     x0: float, y0: float, eps: float = 1e-7, iter_max: int = 100
-) -> tuple[bool, tuple[float, float]]:
+) -> tuple[float, float] | None:
     """Newton法
 
     Args:
@@ -39,9 +39,9 @@ def newton(
         iter_max (int, optional): 最大反復回数. デフォルトは100.
 
     Returns:
-        tuple[bool, tuple[float, float]]: 収束したのか?および近似解
+        tuple[float, float] | None: 近似解 (収束しないとき ==> None)
     """
-    ret = (False, (0, 0))
+    ret = None
     for _ in range(iter_max):
         jacobian = fx(x0, y0) * gy(x0, y0) - fy(x0, y0) * gx(x0, y0)
         dx = (-f(x0, y0) * gy(x0, y0) + fy(x0, y0) * g(x0, y0)) / jacobian
@@ -49,7 +49,7 @@ def newton(
         x0 += dx
         y0 += dy
         if f(x0, y0) < eps and g(x0, y0) < eps:
-            ret = (True, (x0, y0))
+            ret = (x0, y0)
             break
 
     return ret
@@ -57,8 +57,8 @@ def newton(
 
 x0 = 0
 y0 = 0
-flag, (x, y) = newton(x0, y0)
-if flag:
-    print(f"x = {x}, y = {y}")
+ans = newton(x0, y0)
+if ans:
+    print(f"x = {ans[0]}, y = {ans[1]}")
 else:
     print("It didn't converged :(")
