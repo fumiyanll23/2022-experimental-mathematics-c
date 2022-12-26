@@ -4,7 +4,7 @@ import numpy as np
 
 def power_method(
     mat, eigen_init: float = 1000, eps: float = 1e-10, iter_max: int = 100
-) -> tuple[bool, float]:
+) -> float | None:
     """べき乗法
 
     Args:
@@ -14,9 +14,9 @@ def power_method(
         iter_max (int, optional): 最大反復回数. デフォルトは100.
 
     Returns:
-        tuple[bool, float]: 収束したのか?絶対値最大な固有値
+        float | None: 絶対値最大な固有値 (収束しないとき ==> None)
     """
-    ret = (False, 0)
+    ret = None
     n, _ = mat.shape
     xs = np.array([1])
     for _ in range(n - 1):
@@ -26,17 +26,16 @@ def power_method(
         eigen_max = (ys @ ys) / (ys @ xs)
         xs = ys / np.sqrt(ys @ ys)
         if abs(eigen_max - eigen_init) / abs(eigen_init) < eps:
-            ret = (True, eigen_max)
+            ret = eigen_max
             break
         eigen_init = eigen_max
-        ret = (False, eigen_max)
 
     return ret
 
 
 def inverse_power_method(
     mat, eigen_init: float = 1000, eps: float = 1e-7, iter_max: int = 100
-) -> tuple[bool, float]:
+) -> float | None:
     """逆べき乗法
 
     Args:
@@ -46,9 +45,9 @@ def inverse_power_method(
         iter_max (int, optional): 最大反復回数. デフォルトは100.
 
     Returns:
-        tuple[bool, float]: 収束したのか?絶対値最小な固有値
+        float | None: 絶対値最小な固有値 (収束しないとき ==> None)
     """
-    ret = (False, 0)
+    ret = None
     inv_mat = np.linalg.inv(mat)
     n, _ = inv_mat.shape
     xs = np.array([1])
@@ -59,10 +58,9 @@ def inverse_power_method(
         eigen_min = (ys @ xs) / (ys @ ys)
         xs = ys / np.sqrt(ys @ ys)
         if abs(eigen_min - eigen_init) / abs(eigen_init) < eps:
-            ret = (True, eigen_min)
+            ret = eigen_min
             break
         eigen_init = eigen_min
-        ret = (False, eigen_min)
 
     return ret
 
@@ -75,16 +73,18 @@ A = np.array(
     ]
 )
 print("(1)")
-flag, eigen_max = power_method(A)
+eigen_max = power_method(A)
 print("最大固有値:")
-if not flag:
+if eigen_max:
+    print(eigen_max)
+else:
     print("It didn't converges :(")
-print(eigen_max)
-flag, eigen_min = inverse_power_method(A)
+eigen_min = inverse_power_method(A)
 print("最小固有値:")
-if not flag:
+if eigen_min:
+    print(eigen_min)
+else:
     print("It didn't converges :(")
-print(eigen_min)
 
 # (2) [[1,1,2], [0,1,1], [1,1,3]]
 A = np.array(
@@ -95,16 +95,18 @@ A = np.array(
     ]
 )
 print("(2)")
-flag, eigen_max = power_method(A)
+eigen_max = power_method(A)
 print("最大固有値:")
-if not flag:
+if eigen_max:
+    print(eigen_max)
+else:
     print("It didn't converges :(")
-print(eigen_max)
-flag, eigen_min = inverse_power_method(A, iter_max=10000)
+eigen_min = inverse_power_method(A)
 print("最小固有値:")
-if not flag:
+if eigen_min:
+    print(eigen_min)
+else:
     print("It didn't converges :(")
-print(eigen_min)
 
 # (3)[[1, 1, 1], [1, 1, 0], [1, 0, 0]]
 A = np.array(
@@ -115,13 +117,15 @@ A = np.array(
     ]
 )
 print("(3)")
-flag, eigen_max = power_method(A)
+eigen_max = power_method(A)
 print("最大固有値:")
-if not flag:
+if eigen_max:
+    print(eigen_max)
+else:
     print("It didn't converges :(")
-print(eigen_max)
-flag, eigen_min = inverse_power_method(A)
+eigen_min = inverse_power_method(A)
 print("最小固有値:")
-if not flag:
+if eigen_min:
+    print(eigen_min)
+else:
     print("It didn't converges :(")
-print(eigen_min)
