@@ -8,7 +8,7 @@ y = np.zeros(N)
 # 許容誤差
 EPS = 1.0e-6
 # 行列Aの定義
-A = np.array(
+a = np.array(
     [
         [11.0, 7.0, -5.0],
         [0.0, 10.0, -1.0],
@@ -27,12 +27,19 @@ lambda2 = 10000.0
 for k in range(1, KMAX + 1):
     err = 0.0
     # y = Ax
-    y = A @ x
-    sum1 = y @ y
-    sum2 = y @ x
+    for i in range(N):
+        y[i] = 0.0
+        for j in range(N):
+            y[i] += a[i][j] * x[j]
+    sum1 = 0.0
+    sum2 = 0.0
     # レイリー商λ1 = ∥y∥ / (y, x)
-    lambda1 = sum1 / sum2
-    x = y / np.sqrt(sum1)
+    for i in range(N):
+        sum1 += y[i] * y[i]
+        sum2 += y[i] * x[i]
+        lambda1 = sum1 / sum2
+    for i in range(N):
+        x[i] = y[i] / np.sqrt(sum1)
     err = abs(lambda1 - lambda2) / abs(lambda2)
     lambda2 = lambda1
     if err < EPS:
@@ -42,4 +49,4 @@ if cnt == KMAX:
     print("It didn't converged.")
 else:
     print("It converged.")
-    print(f"λ = {lambda1:.6f}")
+    print(f"λ = {lambda1:10.6f}")
